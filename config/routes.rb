@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new' 
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create] do
+    member do
+      get :followings # users/:id/followingsというURLを生成
+      get :followers  # users/:id/followersというURLを生成
+    end
+  end
   
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end
