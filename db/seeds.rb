@@ -14,3 +14,14 @@ User.create(name:"saburo", email:"saburo@saburo.com", password:"saburo1234")
   Micropost.create(content:"投稿#{i}", user_id: Random.rand(1..3))
 end
 
+Micropost.all.sample(10).each do |micropost|
+  User.find(1).like(micropost)
+end
+
+Micropost.all.sample(10).each do |micropost|
+  User.find(2).like(micropost)
+end
+
+Micropost.all.sample(10).each do |micropost|
+  User.find(3).like(micropost)
+end
